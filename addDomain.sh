@@ -45,7 +45,7 @@ check_port () {
 	fi
 }
 
-do_new_config (){
+do_new_config () {
 	NEW_FILE=$BASE_DIR$DOMAIN.conf
 	sudo cp $TEMP_FILE $NEW_FILE
 	sudo sed -i "s/www.example.com/$DOMAIN/g" $NEW_FILE
@@ -53,7 +53,7 @@ do_new_config (){
 	sudo ln -s $NEW_FILE /etc/nginx/sites-enabled
 }
 
-do_create_cert (){
+do_create_cert () {
 	sudo certbot certonly --webroot -d $DOMAIN --email it@example.com -w /var/www/_letsencrypt -n --agree-tos --force-renewal
 	if [ ! -d  $CERT_DIR$DOMAIN ]; then
 		echo "Certbot fails Ceate Certificate"
@@ -81,6 +81,6 @@ check_file_config_exist
 do_new_config
 
 # Create Certificate by Let's Encrypt
-#do_create_cert
+do_create_cert
 
 echo "`date` Cteate Domain: $DOMAIN Finish"
