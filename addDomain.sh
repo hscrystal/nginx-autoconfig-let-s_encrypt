@@ -54,7 +54,7 @@ do_new_config (){
 }
 
 do_create_cert (){
-	sudo certbot certonly --webroot -d $DOMAIN --email ops@bigdata.co.th -w /var/www/_letsencrypt -n --agree-tos --force-renewal
+	sudo certbot certonly --webroot -d $DOMAIN --email it@example.com -w /var/www/_letsencrypt -n --agree-tos --force-renewal
 	if [ ! -d  $CERT_DIR$DOMAIN ]; then
 		echo "Certbot fails Ceate Certificate"
 		exit 1
